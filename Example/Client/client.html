@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Lower Third Example</title>
+<link rel="stylesheet" href="css/custom.css">
+<script>
+	function event(cmdText, valueText) {
+		switch (cmdText) {
+		case "1110":
+			changeElement("somedivtochange1", valueText);
+			break;
+		case "1120":
+			changeElement("somedivtochange2", valueText);
+			break;
+		case "1111":
+			testAnimation();
+			break;
+		case "ping":
+			sendCommand("pong", valueText);
+		}
+	}
+
+	function testAnimation() {
+		var element = document.getElementById('retrigger');
+		element.style.visibility = "visible";
+		element.style.setProperty("-webkit-animation-name", "flyinflyout");
+	}
+</script>
+<script src="js/client.js"></script>
+</head>
+<body>
+	<div class="sitebox">
+		<div class="animatedBox" id="retrigger">
+			<img alt="LT" src="css/lt.png" class="ltimg"> <span class="text1" id="somedivtochange1">lt1A</span> <span class="text2" id="somedivtochange2">lt1B</span>
+		</div>
+	</div>
+</body>

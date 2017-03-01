@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+html {
+	height: 1080px;
+	width: 1920px;
+}
+
+body {
+	height: 1080px;
+	width: 1920px;
+	margin: 0px;
+	overflow: hidden;
+	font-family: 'Montserrat';
+	/*border-style: solid;
+    border-width: 5px;*/
+}
+
+@-webkit-keyframes flyinflyout { 
+0% {
+	left: -100%;
+}
+13% {
+	left: 0%;
+}
+87% {
+	left: 0%;
+}
+100% {
+	left: -100%;
+}
+}
+
+.sitebox {
+	margin-top: 33%;
+}
+
+.ltimg {
+	position: relative;
+}
+
+.animatedBox {
+	position: absolute;
+	visibility: hidden;
+	/*-webkit-animation-name: flyinflyout;*/
+	-webkit-animation-duration: 4s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.text1 {
+	position: absolute; 
+  	top: 60px;
+	left: 35px;
+	font-size: 5em
+}
+.text2 {
+	position: absolute; 
+  	top: 140px;
+	left: 250px;
+	font-size: 3em
+}

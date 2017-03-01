@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Controller Example</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+<link rel="stylesheet" href="css/custom.css">
+<script src="js/communicator.js"></script>
+<script>
+function Macro1() {
+	sendCommand("1110", getInput("line1"));
+	sendCommand("1120", getInput("line2"));
+	sendCommand("1111", "");
+}
+</script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col s3">
+				<input type="text" placeholder="Line 1" id="line1"> <input type="text" placeholder="Line 2" id="line2">
+			</div>
+			<div class="col s2">
+				<div class="space">
+					<button class="btn" onClick='sendCommand("1110", getInput("line1"));'>Update Line 1</button>
+				</div>
+				<div class="space">
+					<button class="btn" onClick='sendCommand("1120", getInput("line2"));'>Update Line 2</button>
+				</div>
+				<div class="space">
+					<button class="btn" onClick='sendCommand("1111", "");'>Trigger</button>
+				</div>
+				<div class="space">
+					<button class="btn" onClick='Macro1();'>Macro</button>
+				</div>
+			</div>
+			<div class="col s1"></div>
+			<div class="col s1"></div>
+			<div class="col s5">
+				<div class="row">
+					<textarea id="outputtext" rows="20" cols="50" class="materialize-textarea"></textarea>
+					<input id="inputtext"> <input id="url">
+					<button class="btn" onClick='sendCommand(getInput("inputtext"), getInput("inputtext").substring(5));'>Send</button>
+					<button class="btn" onClick='doDisconnect();' id="btt_disconnect">Disconnect</button>
+					<button class="btn" onClick='doConnect();' id="btt_connect">Connect</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+</body>
+</html>

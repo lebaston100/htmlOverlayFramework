@@ -3,7 +3,8 @@ from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
 clients = []
 class Server(WebSocket):
     def handleMessage(self):
-       for client in clients:
+        print(self.data)
+        for client in clients:
           if client != self:
              client.sendMessage(self.data)
 
@@ -13,7 +14,7 @@ class Server(WebSocket):
 
     def handleClose(self):
        clients.remove(self)
-       print(self.address, 'closed')
+       print(self.address, 'disconnected')
 
 server = SimpleWebSocketServer('', 8000, Server)
 server.serveforever()

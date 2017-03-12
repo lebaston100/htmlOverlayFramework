@@ -37,16 +37,17 @@ function doConnect() {
 
 function onOpen(evt) {
 	socketisOpen = 1;
-	console.log("\ninfo:connected");
+	console.log("\nconnected");
 }
 
 function onClose(evt) {
 	socketisOpen = 0;
-	console.log("\ninfo:disconnected");
+	console.log("\ndisconnected");
 }
 
 function onMessage(evt) {
 	console.log(evt.data);
+	event(cmdText, valueText);
 }
 
 function onError(evt) {

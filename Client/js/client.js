@@ -68,7 +68,6 @@ function onOpen(evt) {
 function onMessage(evt) {
 	var cmdText = evt.data.substring(0, 4);
 	var valueText = evt.data.substring(5);
-	event(cmdText, valueText);
 }
 
 function onError(evt) {

@@ -6,7 +6,18 @@
 <link rel="stylesheet" href="css/custom.css">
 <script src="js/communicator.js"></script>
 <script>
+function event(cmdText, valueText) {
+	switch (cmdText) {
+	case "xxxx":
+		//What to do
+		break;
+	case "ping":
+		sendCommand("pong", valueText);
+	}
+}
+
 //Macros go here
+
 </script>
 </head>
 <body>

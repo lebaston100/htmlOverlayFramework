@@ -1,0 +1,21 @@
+html {
+	height: 1080px;
+	width: 1920px;
+}
+
+body {
+	height: 1080px;
+	width: 1920px;
+	margin: 0px;
+	overflow: hidden;
+}
+
+
+.sitebox {
+	visibility: hidden;
+}
+
+#video1 {
+	width: 1920px;
+	height: 1080px;
+}

@@ -21,8 +21,9 @@ function sendCommand(p1, p2) {
 }
 
 function init() {
-	document.getElementById("url").value = "ws://localhost:8000/"
-	document.getElementById("inputtext").value = "info:hi"
+	document.getElementById("ip").value = ip;
+	document.getElementById("port").value = port;
+	document.getElementById("inputtext").value = "ping:test"
 	document.getElementById("btt_disconnect").disabled = true;
 	doConnect();
 }

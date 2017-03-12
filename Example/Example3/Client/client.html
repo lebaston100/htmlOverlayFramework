@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="de">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<meta charset="utf-8">
+<title>Video player example</title>
+<link rel="stylesheet" href="css/custom.css">
+<script>
+	function event(cmdText, valueText) {
+		switch (cmdText) {
+		case "3111":
+			showContent("videobox");
+			playMedia("video1");
+			break;
+		case "ping":
+			sendCommand("pong", valueText);
+			break;
+		}
+	}
+	
+	function video1Ended() {
+	    hideContent("videobox");
+	}
+</script>
+<script src="js/client.js"></script>
+</head>
+<body>
+	<div class="sitebox" id="videobox">
+		<video id="video1" preload="auto" onended="video1Ended();">
+			<source src="stingertest.webm" type="video/webm">
+		</video>
+	</div>
+</body>

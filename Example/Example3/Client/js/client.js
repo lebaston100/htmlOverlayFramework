@@ -8,12 +8,6 @@ var socketisOpen = 0;
 
 function init() {
 	doConnect();
-	var element = document.getElementById('retrigger');
-	element.addEventListener('webkitAnimationEnd', function() {
-		var element = document.getElementById('retrigger');
-		element.style.visibility = 'hidden';
-		element.style.removeProperty("-webkit-animation-name");
-	}, false);
 }
 
 function sendCommand(p1, p2) {
@@ -25,7 +19,23 @@ function sendCommand(p1, p2) {
 	}
 }
 
-function changeElement(id, newContent) {
+function playMedia(id) {
+	document.getElementById(id).play();
+}
+
+function pauseMedia(id) {
+	document.getElementById(id).pause();
+}
+
+function showContent(id) {
+	document.getElementById(id).style.visibility = "visible";
+}
+
+function hideContent(id) {
+	document.getElementById(id).style.visibility = "hidden";
+}
+
+function changeElementContent(id, newContent) {
 	document.getElementById(id).innerHTML = newContent
 }
 

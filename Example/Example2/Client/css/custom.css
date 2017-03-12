@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+    height: 1080px;
+    width: 1920px;
+    margin: 0px;
+    overflow: hidden;
+    font-family: 'Montserrat';
+}
+
+html {
+    height: 1080px;
+    width: 1920px;
+}
+
+.clear {
+    clear: both;
+}
+
+#scoreboard {
+	/*-webkit-animation-name: animScoreboardFWD;*/
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 2s;
+    width: 640px;
+    height: 50px;
+    margin: auto;
+    margin-top: 800px;
+    /* Border */
+    border-radius: 25px 25px 25px 25px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+    /* Box Shadow */
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
+}
+
+@-webkit-keyframes animScoreboardFWD
+{
+    0% {
+        width: 128px;
+        margin-top: 1080px;
+    }
+    33% {
+        margin-top: 800px;
+        width: 128px;
+    }
+    66% { 
+    	width: 640px;
+    }
+    100% { 
+    	width: 640px;
+    }
+}
+
+.team {
+    /*-webkit-animation-name: animTeamFWD;*/
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 2s;
+    float: left;
+    display: block;
+    width: 256px;
+    height: 44px;
+    padding-top: 6px;
+    border: 0px solid #000000;
+    text-align: center;
+    font-size: 22pt;
+    color: #fff;
+}
+
+#team1 {
+    /* Background */
+    background-color: #3093c7;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#3093c7), to(#1c5a85));
+    background-image: -webkit-linear-gradient(top, #3093c7, #1c5a85);
+    background-image: -moz-linear-gradient(top, #3093c7, #1c5a85);
+    background-image: -ms-linear-gradient(top, #3093c7, #1c5a85);
+    background-image: -o-linear-gradient(top, #3093c7, #1c5a85);
+    background-image: linear-gradient(to bottom, #3093c7, #1c5a85);
+    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#3093c7, endColorstr=#1c5a85);
+    /* Border */
+    border-radius: 25px 0px 0px 25px;
+    -moz-border-radius: 25px 0px 0px 25px;
+    -webkit-border-radius: 25px 0px 0px 25px;
+}
+
+#team2 {
+    /* Background */
+    background-color: #a90329;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#a90329), to(#6d0019));
+    background-image: -webkit-linear-gradient(top, #a90329, #6d0019);
+    background-image: -moz-linear-gradient(top, #a90329, #6d0019);
+    background-image: -ms-linear-gradient(top, #a90329, #6d0019);
+    background-image: -o-linear-gradient(top, #a90329, #6d0019);
+    background-image: linear-gradient(to bottom, #a90329, #6d0019);
+    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#a90329, endColorstr=#6d0019);
+    /* Border */
+    border-radius: 0px 25px 25px 0px;
+    -moz-border-radius: 0px 25px 25px 0px;
+    -webkit-border-radius: 0px 25px 25px 0px;
+}
+
+@-webkit-keyframes animTeamFWD {
+    0% { width: 0px; }
+    33% { width: 0px; }
+    66% { width: 256px; }
+    100% { width: 256px; }
+}
+
+
+.teamName {
+    /*-webkit-animation-name: animTeamNameFWD;*/
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 2s;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+}
+
+@-webkit-keyframes animTeamNameFWD {
+    0% { opacity: 0; }
+    66% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+#scorePlaceholder {
+    float: left;
+    width: 128px;
+}
+
+#score {
+    /*-webkit-animation-name: animScoreFWD;*/
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 2s;
+    position: absolute;
+    top: 797px;
+    left: 893px;
+    width: 134px;
+    height: 47px;
+    padding-top: 9px;
+    text-align: center;
+    background-color: white;
+    font-size: 22pt;
+    color: #000;
+    /* Border */
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    border: 0px solid #000;
+    /* Box Shadow */
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
+}
+
+@-webkit-keyframes animScoreFWD {
+    0% { top: 1080px; }
+    33% { top: 797px; }
+}

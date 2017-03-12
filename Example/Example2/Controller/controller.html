@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Controller Example</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+<link rel="stylesheet" href="css/custom.css">
+<script src="js/communicator.js"></script>
+<script>
+	var scoreTeam1 = 0;
+	var scoreTeam2 = 0;
+
+	function team1up() {
+		scoreTeam1 += 1;
+		changeElementContent("curScore1", scoreTeam1);
+		sendCommand("2300", scoreTeam1);
+	}
+	function team1down() {
+		scoreTeam1 -= 1;
+		changeElementContent("curScore1", scoreTeam1);
+		sendCommand("2300", scoreTeam1);
+	}
+	function team2up() {
+		scoreTeam2 += 1;
+		changeElementContent("curScore2", scoreTeam2);
+		sendCommand("2400", scoreTeam2);
+	}
+	function team2down() {
+		scoreTeam2 -= 1;
+		changeElementContent("curScore2", scoreTeam2);
+		sendCommand("2400", scoreTeam2);
+	}
+	function animateIn() {
+		updateTeamName1();
+		updateTeamName2();
+		sendCommand("2300", scoreTeam1);
+		sendCommand("2400", scoreTeam2);
+		sendCommand("2500", "");
+	}
+	function animateOut() {
+		sendCommand("2600", "");
+	}
+	function updateTeamName1() {
+		sendCommand("2100", getInput("team1"));
+	}
+	function updateTeamName2() {
+		sendCommand("2200", getInput("team2"));
+	}
+</script>
+</head>
+<body>
+	<div class="cc">
+		<div class="row">
+			<div class="col s3">Custom GUI Demo</div>
+			<div class="col s3"></div>
+			<div class="col s5">Console Demo</div>
+		</div>
+		<div class="row">
+			<div class="col s3">
+				<input type="text" placeholder="Team 1" id="team1" value="Team 1"> <input type="text" placeholder="Team 2" id="team2" value="Team 2">
+				<div class="scoreText">
+					Current score team 1: <span id="curScore1">0</span>
+				</div>
+				<div class="scoreText">
+					Current score team 2: <span id="curScore2">0</span>
+				</div>
+			</div>
+			<div class="col s2">
+				<div class="space">
+					<button class="btn" onClick='updateTeamName1();'>Update Team 1</button>
+				</div>
+				<div class="space">
+					<button class="btn" onClick='updateTeamName2();'>Update Team 2</button>
+				</div>
+				<div class="space2">
+					<button class="btn" onClick='team1up();'>Team 1 Score +1</button>
+				</div>
+				<div class="space2">
+					<button class="btn" onClick='team1down();'>Team 1 Score -1</button>
+				</div>
+				<div class="space2">
+					<button class="btn" onClick='team2up();'>Team 2 Score +1</button>
+				</div>
+				<div class="space2">
+					<button class="btn" onClick='team2down();'>Team 2 Score -1</button>
+				</div>
+				<div class="space2">
+					<button class="btn" onClick='animateIn();'>Animate In</button>
+				</div>
+				<div class="space2">
+					<button class="btn" onClick='animateOut();'>Animate Out</button>
+				</div>
+			</div>
+			<div class="col s1"></div>
+			<div class="col s5">
+				<div class="row">
+					<div class="col s4">
+						<br> <br>Console:<br> <br> <br>Command Input:<br> <br> <br>IP:<br> <br> <br>Port:
+					</div>
+					<div class="col s8">
+						<div class="row">
+							<textarea id="outputtext" rows="20" cols="50" class="materialize-textarea"></textarea>
+							<input id="inputtext" placeholder="Command"> <input id="ip" placeholder="127.0.0.1"> <input id="port" type="number" placeholder="8000">
+							<button class="btn" onClick='sendCommand(getInput("inputtext").substring(0, 4), getInput("inputtext").substring(5));'>Send</button>
+							<button class="btn" onClick='doDisconnect();' id="btt_disconnect">Disconnect</button>
+							<button class="btn" onClick='doConnect();' id="btt_connect">Connect</button>
+						</div>
+						Commands in this example:<br>
+						Update Team 1 Name: "2100:NewName"<br>
+						Update Team 2 Name: "2200:NewName"<br>
+						Update Team 1 Score: "2300:NewScore"<br>
+						Update Team 2 Score: "2400:NewScore"<br>
+						Animate In: "2500"<br>
+						Animate Out: "2600"
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Scoreboard example</title>
+<link rel="stylesheet" href="css/custom.css">
+<script>
+	function event(cmdText, valueText) {
+		switch (cmdText) {
+		case "2100":
+			changeElementContent("teamName1", valueText);
+			break;
+		case "2200":
+			changeElementContent("teamName2", valueText);
+			break;
+		case "2300":
+			changeElementContent("score1", valueText);
+			break;
+		case "2400":
+			changeElementContent("score2", valueText);
+			break;
+		case "2500":
+			animateIn();
+			break;
+		case "2600":
+			animateOut();
+			break;
+		case "ping":
+			sendCommand("pong", valueText);
+		}
+	}
+
+	// Animation releated stuff
+
+	function initAnimation() {
+		document.getElementById('scoreboard').addEventListener('webkitAnimationEnd', function() {
+			document.getElementById('scoreboard').style.removeProperty("-webkit-animation-name");
+			document.getElementById('team1').style.removeProperty("-webkit-animation-name");
+			document.getElementById('team2').style.removeProperty("-webkit-animation-name");
+			document.getElementById('teamName1').style.removeProperty("-webkit-animation-name");
+			document.getElementById('teamName2').style.removeProperty("-webkit-animation-name");
+			document.getElementById('score').style.removeProperty("-webkit-animation-name");
+		}, false);
+		eventHideafterAnimation();
+	}
+
+	function animateIn() {
+		var element = document.getElementById('scoreboard');
+		element.removeEventListener('webkitAnimationEnd',
+				eventHideafterAnimation);
+		element.style.visibility = "visible";
+		element.style.animationDirection="normal";
+		element.style
+				.setProperty("-webkit-animation-name", "animScoreboardFWD");
+		
+		var element = document.getElementById('team1');
+		element.style.visibility = "visible";
+		element.style.animationDirection="normal";
+		element.style.setProperty("-webkit-animation-name", "animTeamFWD");
+		
+		var element = document.getElementById('team2');
+		element.style.visibility = "visible";
+		element.style.animationDirection="normal";
+		element.style.setProperty("-webkit-animation-name", "animTeamFWD");
+		
+		var element = document.getElementById('teamName1');
+		element.style.visibility = "visible";
+		element.style.animationDirection="normal";
+		element.style.setProperty("-webkit-animation-name", "animTeamNameFWD");
+		
+		var element = document.getElementById('teamName2');
+		element.style.visibility = "visible";
+		element.style.animationDirection="normal";
+		element.style.setProperty("-webkit-animation-name", "animTeamNameFWD");
+		
+		var element = document.getElementById('score');
+		element.style.visibility = "visible";
+		element.style.animationDirection="normal";
+		element.style.setProperty("-webkit-animation-name", "animScoreFWD");
+	}
+
+	function animateOut() {
+		var element = document.getElementById('scoreboard');
+		element.addEventListener('webkitAnimationEnd', eventHideafterAnimation,
+				false);
+		element.style.visibility = "visible";
+		element.style.animationDirection="reverse";
+		element.style
+				.setProperty("-webkit-animation-name", "animScoreboardFWD");
+		
+		var element = document.getElementById('team1');
+		element.style.visibility = "visible";
+		element.style.animationDirection="reverse";
+		element.style.setProperty("-webkit-animation-name", "animTeamFWD");
+		
+		var element = document.getElementById('team2');
+		element.style.visibility = "visible";
+		element.style.animationDirection="reverse";
+		element.style.setProperty("-webkit-animation-name", "animTeamFWD");
+		
+		var element = document.getElementById('teamName1');
+		element.style.visibility = "visible";
+		element.style.animationDirection="reverse";
+		element.style.setProperty("-webkit-animation-name", "animTeamNameFWD");
+		
+		var element = document.getElementById('teamName2');
+		element.style.visibility = "visible";
+		element.style.animationDirection="reverse";
+		element.style.setProperty("-webkit-animation-name", "animTeamNameFWD");
+		
+		var element = document.getElementById('score');
+		element.style.visibility = "visible";
+		element.style.animationDirection="reverse";
+		element.style.setProperty("-webkit-animation-name", "animScoreFWD");
+	}
+
+	function eventHideafterAnimation() {
+		var element = document.getElementById('scoreboard');
+		element.style.visibility = 'hidden';
+		element.style.removeProperty("-webkit-animation-name");
+		var element = document.getElementById('team1');
+		element.style.visibility = 'hidden';
+		element.style.removeProperty("-webkit-animation-name");
+		var element = document.getElementById('team2');
+		element.style.visibility = 'hidden';
+		element.style.removeProperty("-webkit-animation-name");
+		var element = document.getElementById('teamName1');
+		element.style.visibility = 'hidden';
+		element.style.removeProperty("-webkit-animation-name");
+		var element = document.getElementById('teamName2');
+		element.style.visibility = 'hidden';
+		element.style.removeProperty("-webkit-animation-name");
+		var element = document.getElementById('score');
+		element.style.visibility = 'hidden';
+		element.style.removeProperty("-webkit-animation-name");
+	}
+</script>
+<script src="js/client.js"></script>
+</head>
+<body>
+	<div id="score">
+		<span id="score1">0</span> - <span id="score2">0</span>
+	</div>
+	<div id="scoreboard">
+		<div id="team1" class="team">
+			<span id="teamName1" class="teamName">Team 1</span>
+		</div>
+		<div id="scorePlaceholder">.</div>
+		<div id="team2" class="team">
+			<span id="teamName2" class="teamName">Team 2</span>
+		</div>
+		<div class="clear"></div>
+	</div>
+</body>

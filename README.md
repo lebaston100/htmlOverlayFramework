@@ -1,3 +1,3 @@
-HTML Lower Thirds Software
+Websocket based Video Overlay Framework
 
-Not finished yet.
+The a look at the Examples and the Wiki to find out how it all works

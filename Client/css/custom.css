@@ -6,6 +6,7 @@ body {
     margin: 0px;
     overflow: hidden;
     font-family: 'Montserrat';
+    background-color: rgba(0, 0, 0, 0);
 }
 
 html {

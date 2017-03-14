@@ -20,6 +20,10 @@ function sendCommand(p1, p2) {
 	}
 }
 
+function setMediaVolume(id, volume) {
+	document.getElementById(id).volume = volume/100;
+}
+
 function playMedia(id) {
 	document.getElementById(id).play();
 }

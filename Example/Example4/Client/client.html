@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="de">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<meta charset="utf-8">
+<title>Soundboard example</title>
+<link rel="stylesheet" href="css/custom.css">
+<script>
+	function event(cmdText, valueText) {
+		switch (cmdText) {
+		case "4110":
+			playMedia("audio1");
+			break;
+		case "4210":
+			playMedia("audio2");
+			break;
+		case "4310":
+			playMedia("audio3");
+			break;
+		case "4410":
+			playMedia("audio4");
+			break;
+		case "4255":
+			setMediaVolume("audio1", valueText);
+			setMediaVolume("audio2", valueText);
+			setMediaVolume("audio3", valueText);
+			setMediaVolume("audio4", valueText);
+			break;
+		case "ping":
+			sendCommand("pong", valueText);
+			break;
+		}
+	}
+</script>
+<script src="js/client.js"></script>
+</head>
+<body>
+	<audio id="audio1" controls preload="auto">
+		<source src="sound_1_message.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="audio2" controls preload="auto">
+		<source src="sound_2_gotitem.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="audio3" controls preload="auto">
+		<source src="sound_3_scary.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="audio4" controls preload="auto">
+		<source src="sound_4_successful.mp3" type="audio/mpeg">
+	</audio>
+</body>

@@ -1,10 +1,11 @@
 var ip = "127.0.0.1";
 var port = "8000";
 
-///////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
 
 window.addEventListener("load", init, false);
 var socketisOpen = 0;
+var intervalID = 0;
 
 function init() {
 	doConnect();
@@ -20,7 +21,7 @@ function sendCommand(p1, p2) {
 }
 
 function setMediaVolume(id, volume) {
-	document.getElementById(id).volume = volume/100;
+	document.getElementById(id).volume = volume / 100;
 }
 
 function playMedia(id) {
@@ -61,24 +62,26 @@ function doConnect() {
 
 function onClose(evt) {
 	socketisOpen = 0;
-	doConnect();
+	if (!intervalID) {
+		intervalID = setInterval(doConnect, 5000);
+	}
 }
 
 function onOpen(evt) {
 	socketisOpen = 1;
+	clearInterval(intervalID);
+	intervalID = 0;
 }
 
 function onMessage(evt) {
-	var cmdText = evt.data.substring(0, 4);
-	var valueText = evt.data.substring(5);
-	event(cmdText, valueText);
+	event(evt.data.substring(0, 4), evt.data.substring(5));
 }
 
 function onError(evt) {
 	socketisOpen = 0;
-	websocket.close();
-	doConnect();
-	console.log('Fail: ' + evt.data);
+	if (!intervalID) {
+		intervalID = setInterval(doConnect, 5000);
+	}
 }
 
 function doDisconnect() {

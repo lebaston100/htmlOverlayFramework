@@ -6,6 +6,8 @@ var port = "8000";
 
 window.addEventListener("load", init, false);
 var socketisOpen = 0;
+var intervalID = 0;
+var closedByUser = 0;
 
 function getInput(id) {
 	return document.getElementById(id).value;
@@ -46,14 +48,21 @@ function doConnect() {
 
 function onOpen(evt) {
 	socketisOpen = 1;
-	writeToScreen("\ninfo:connected");
+	writeToScreen("\nInfo: Connection opened");
 	document.getElementById("btt_connect").disabled = true;
 	document.getElementById("btt_disconnect").disabled = false;
+	clearInterval(intervalID);
+	intervalID = 0;
 }
 
 function onClose(evt) {
 	socketisOpen = 0;
-	writeToScreen("\ninfo:disconnected");
+	if (!intervalID && !closedByUser) {
+		intervalID = setInterval(doConnect, 5000);
+	} else if (closedByUser) {
+		closedByUser = 0;
+	}
+	writeToScreen("\nInfo: Connection closed");
 	document.getElementById("btt_connect").disabled = false;
 	document.getElementById("btt_disconnect").disabled = true;
 }
@@ -63,16 +72,17 @@ function onMessage(evt) {
 }
 
 function onError(evt) {
-	writeToScreen('\nerror: ' + evt.data);
+	writeToScreen('\nConnection failed, is the Server running?');
 	socketisOpen = 0;
-	websocket.close();
 	document.getElementById("btt_connect").disabled = false;
 	document.getElementById("btt_disconnect").disabled = true;
-	doConnect();
+	if (!intervalID) {
+		intervalID = setInterval(doConnect, 5000);
+	}
 }
 
 function writeToScreen(message) {
-	document.getElementById("outputtext").value += message
+	document.getElementById("outputtext").value += message;
 	document.getElementById("outputtext").scrollTop = document
 			.getElementById("outputtext").scrollHeight;
 
@@ -80,5 +90,6 @@ function writeToScreen(message) {
 
 function doDisconnect() {
 	socketisOpen = 0;
+	closedByUser = 1;
 	websocket.close();
 }

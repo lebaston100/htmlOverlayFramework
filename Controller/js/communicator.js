@@ -5,6 +5,7 @@ var port = "8000";
 
 window.addEventListener("load", init, false);
 var socketisOpen = 0;
+var intervalID = 0;
 
 function sendCommand(p1, p2) {
 	if (socketisOpen) {
@@ -35,25 +36,33 @@ function doConnect() {
 	};
 }
 
-function onOpen(evt) {
-	socketisOpen = 1;
-	console.log("\nconnected");
-}
-
 function onClose(evt) {
 	socketisOpen = 0;
-	console.log("\ndisconnected");
+	if (!intervalID) {
+		intervalID = setInterval(doConnect, 5000);
+	}
+	console.log("\nConnection closed");
+}
+
+function onOpen(evt) {
+	socketisOpen = 1;
+	clearInterval(intervalID);
+	intervalID = 0;
+	console.log("\nConnection opened");
 }
 
 function onMessage(evt) {
 	console.log(evt.data);
+	var cmdText = evt.data.substring(0, 4);
+	var valueText = evt.data.substring(5);
 	event(cmdText, valueText);
 }
 
 function onError(evt) {
 	socketisOpen = 0;
-	websocket.close();
-	doConnect();
+	if (!intervalID) {
+		intervalID = setInterval(doConnect, 5000);
+	}
 }
 
 function doDisconnect() {

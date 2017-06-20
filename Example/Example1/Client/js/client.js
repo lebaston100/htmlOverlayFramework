@@ -9,7 +9,6 @@ var intervalID = 0;
 
 function init() {
 	doConnect();
-	initAnimation();
 }
 
 function sendCommand(p1, p2) {

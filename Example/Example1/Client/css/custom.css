@@ -14,21 +14,6 @@ body {
 	background-color: rgba(0, 0, 0, 0);
 }
 
-@-webkit-keyframes flyinflyout { 
-0% {
-	left: -100%;
-}
-13% {
-	left: 0%;
-}
-87% {
-	left: 0%;
-}
-100% {
-	left: -100%;
-}
-}
-
 .sitebox {
 	margin-top: 33%;
 }
@@ -37,14 +22,9 @@ body {
 	position: relative;
 }
 
-.animatedBox {
+#retrigger {
 	position: absolute;
-	visibility: hidden;
-	/*-webkit-animation-name: flyinflyout;*/
-	-webkit-animation-duration: 4s;
-	-webkit-animation-iteration-count: 1;
-	-webkit-animation-timing-function: ease-out;
-	-webkit-animation-fill-mode: forwards;
+	left: -100%;
 }
 
 .text1 {

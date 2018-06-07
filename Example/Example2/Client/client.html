@@ -5,19 +5,19 @@
 <title>Scoreboard example</title>
 <link rel="stylesheet" href="css/custom.css">
 <script>
-	function event(cmdText, valueText) {
-		switch (cmdText) {
+	function event(messageID, data) {
+		switch (messageID) {
 		case "2100":
-			changeElementContent("teamName1", valueText);
+			changeElementContent("teamName1", data);
 			break;
 		case "2200":
-			changeElementContent("teamName2", valueText);
+			changeElementContent("teamName2", data);
 			break;
 		case "2300":
-			changeElementContent("score1", valueText);
+			changeElementContent("score1", data);
 			break;
 		case "2400":
-			changeElementContent("score2", valueText);
+			changeElementContent("score2", data);
 			break;
 		case "2500":
 			animateIn();
@@ -26,7 +26,7 @@
 			animateOut();
 			break;
 		case "ping":
-			sendCommand("pong", valueText);
+			sendCommand("pong", data);
 		}
 	}
 

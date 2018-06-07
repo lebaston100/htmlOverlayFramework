@@ -1,4 +1,4 @@
-var ip = "127.0.0.1";
+var ip = "127.0.0.1"; //Modify this to point to the ip address where your server is running on
 var port = "8000";
 
 ///////////////////////////////////////////////////////////////////////////
@@ -15,10 +15,10 @@ function getInput(id) {
 
 function sendCommand(p1, p2) {
 	if (socketisOpen) {
-		p1 = p1.substring(0, 4);
-		websocket.send(p1 + ":" + p2);
+		var jsonOBJ = {"message-id": p1, "data": p2};
+		websocket.send(JSON.stringify(jsonOBJ));
 	} else {
-		writeToScreen('\nFail: Not connected');
+		writeToScreen('Fail: Not connected\n');
 	}
 }
 
@@ -67,6 +67,7 @@ function onClose(evt) {
 }
 
 function onMessage(evt) {
+	var jsonOBJ = JSON.parse(evt.data);
 	writeToScreen('\n' + evt.data);
 }
 

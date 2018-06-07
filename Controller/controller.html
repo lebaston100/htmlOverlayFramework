@@ -6,13 +6,13 @@
 <link rel="stylesheet" href="css/custom.css">
 <script src="js/communicator.js"></script>
 <script>
-function event(cmdText, valueText) {
-	switch (cmdText) {
+function event(messageID, data) {
+	switch (messageID) {
 	case "xxxx":
 		//What to do
 		break;
 	case "ping":
-		sendCommand("pong", valueText);
+		sendCommand("pong", data);
 	}
 }
 

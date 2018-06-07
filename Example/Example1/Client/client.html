@@ -5,13 +5,13 @@
 <title>Lower Third Example</title>
 <link rel="stylesheet" href="css/custom.css">
 <script>
-	function event(cmdText, valueText) {
-		switch (cmdText) {
+	function event(messageID, data) {
+		switch (messageID) {
 		case "1110":
-			changeElementContent("sometexttochange1", valueText);
+			changeElementContent("sometexttochange1", data);
 			break;
 		case "1120":
-			changeElementContent("sometexttochange2", valueText);
+			changeElementContent("sometexttochange2", data);
 			break;
 		case "1111":
 			if (intervalID == 0) {
@@ -19,7 +19,7 @@
 			}
 			break;
 		case "ping":
-			sendCommand("pong", valueText);
+			sendCommand("pong", data);
 		}
 	}
 

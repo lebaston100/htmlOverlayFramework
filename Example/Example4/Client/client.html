@@ -5,8 +5,8 @@
 <title>Soundboard example</title>
 <link rel="stylesheet" href="css/custom.css">
 <script>
-	function event(cmdText, valueText) {
-		switch (cmdText) {
+	function event(messageID, data) {
+		switch (messageID) {
 		case "4110":
 			playMedia("audio1");
 			break;
@@ -20,13 +20,13 @@
 			playMedia("audio4");
 			break;
 		case "4255":
-			setMediaVolume("audio1", valueText);
-			setMediaVolume("audio2", valueText);
-			setMediaVolume("audio3", valueText);
-			setMediaVolume("audio4", valueText);
+			setMediaVolume("audio1", data);
+			setMediaVolume("audio2", data);
+			setMediaVolume("audio3", data);
+			setMediaVolume("audio4", data);
 			break;
 		case "ping":
-			sendCommand("pong", valueText);
+			sendCommand("pong", data);
 			break;
 		}
 	}

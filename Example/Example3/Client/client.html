@@ -5,14 +5,14 @@
 <title>Video player example</title>
 <link rel="stylesheet" href="css/custom.css">
 <script>
-	function event(cmdText, valueText) {
-		switch (cmdText) {
+	function event(messageID, data) {
+		switch (messageID) {
 		case "3111":
 			showContent("videobox");
 			playMedia("video1");
 			break;
 		case "ping":
-			sendCommand("pong", valueText);
+			sendCommand("pong", data);
 			break;
 		}
 	}

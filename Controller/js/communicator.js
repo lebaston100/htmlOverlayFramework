@@ -1,4 +1,4 @@
-var ip = "127.0.0.1";
+var ip = "127.0.0.1"; //Modify this to point to the ip adress where your server is running on
 var port = "8000";
 
 ////////////////////////////Magic Line///////////////////////////////////////////////
@@ -9,10 +9,10 @@ var intervalID = 0;
 
 function sendCommand(p1, p2) {
 	if (socketisOpen) {
-		p1 = p1.substring(0, 4);
-		websocket.send(p1 + ":" + p2);
+		var jsonOBJ = {"message-id": p1, "data": p2};
+		websocket.send(JSON.stringify(jsonOBJ));
 	} else {
-		console.log('\nFail: Not connected');
+		console.log('Fail: Not connected\n');
 	}
 }
 
@@ -41,21 +41,20 @@ function onClose(evt) {
 	if (!intervalID) {
 		intervalID = setInterval(doConnect, 5000);
 	}
-	console.log("\nConnection closed");
+	console.log("Connection closed\n");
 }
 
 function onOpen(evt) {
 	socketisOpen = 1;
 	clearInterval(intervalID);
 	intervalID = 0;
-	console.log("\nConnection opened");
+	console.log("Connection opened\n");
 }
 
 function onMessage(evt) {
-	console.log(evt.data);
-	var cmdText = evt.data.substring(0, 4);
-	var valueText = evt.data.substring(5);
-	event(cmdText, valueText);
+	var jsonOBJ = JSON.parse(evt.data);
+	console.log(jsonOBJ);
+	event(jsonOBJ["message-id"], jsonOBJ["data"]);
 }
 
 function onError(evt) {
